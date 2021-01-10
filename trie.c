@@ -123,7 +123,7 @@ void printTrie_parameter(struct Node *root, char *word, int place)
       word[place] = root->letter;
       word[place + 1] = 0;
 
-      for (int f = 0; f <= place; f++)
+      for (int f = 1; f <= place; f++)
       {
          printf("%c", word[f]);
       }
