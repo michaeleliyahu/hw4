@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[])
 {
+    int x;
+    // putchar(x);
     struct Node *root = EmptyTrie();
     int i = 0;
     char *txt = (char *)malloc(sizeof(char));
@@ -58,28 +60,18 @@ int main(int argc, char *argv[])
         }
     }
     char *word = (char *)malloc(sizeof(char));
-    // printTrie_parameter(root, word, 0);
 
     if (argc == 1)
     {
-        // printf("defult print: \n");
         printTrie_defult(root, word, 0);
     }
     else if (argc == 2)
     {
         if (strcmp(argv[1], "r") == 0)
         {
-            // printf("\nparameter print: \n");
             printTrie_parameter(root, word, 0);
         }
     }
-    // printTrie_defult(root, word, 0);
-    // free(txt);
-    // free(word);
+
     free_trie(root);
-    // free(full_text);
-    // printf("%c", *(txt+2));
-    // put_word(root, txt);
-    // put_word(root, txt);
-    // print_Trie(root, txt);
 }
