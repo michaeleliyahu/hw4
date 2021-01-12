@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
             if (full_text == EOF)
             {
                 put_word(root, txt);
-                // free(txt);
+                free(txt);
             }
         }
         else
@@ -47,7 +47,6 @@ int main(int argc, char *argv[])
             if ((full_text < 'a' || full_text > 'z') && full_text != ' ' && full_text != '\0' && full_text != '\t' && full_text != '\n')
             {
                 full_text = getc(stdin);
-                // printf("%c", full_text);
             }
             else
             {
@@ -59,11 +58,13 @@ int main(int argc, char *argv[])
             }
         }
     }
+    free(txt);
     char *word = (char *)malloc(sizeof(char));
 
     if (argc == 1)
     {
         printTrie_defult(root, word, 0);
+        free(word);
     }
     else if (argc == 2)
     {
@@ -72,6 +73,6 @@ int main(int argc, char *argv[])
             printTrie_parameter(root, word, 0);
         }
     }
-
+    
     free_trie(root);
 }

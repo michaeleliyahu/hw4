@@ -31,7 +31,6 @@ struct Node *EmptyTrie(void)
 
 void put_word(struct Node *root, char *word)
 {
-   // printf("%c",*(word +0));
    struct Node *temp = root;
 
    int keep_null = 0;
@@ -45,8 +44,7 @@ void put_word(struct Node *root, char *word)
       {
          if (temp->child[i] != NULL)
          {
-            struct Node *temp_place = temp->child[i];
-            if (temp_place->letter != *(word + j))
+            if (temp->child[i]->letter != *(word + j))
             {
                i++;
             }
@@ -56,7 +54,6 @@ void put_word(struct Node *root, char *word)
                exist = true;
                temp = temp->child[i];
             }
-            // free(temp_place);
          }
          else
          {
@@ -73,7 +70,6 @@ void put_word(struct Node *root, char *word)
    }
    temp->End_Word = true;
    temp->count++;
-   // free(temp);
 }
 
 void printTrie_defult(struct Node *root, char *word, int place)
@@ -94,19 +90,14 @@ void printTrie_defult(struct Node *root, char *word, int place)
       }
       printf(" %d", root->count);
       printf("\n");
-      // printf("%s %d\n", word, root->count);
    }
    for (int i = 0; i < SIZE; i++)
    {
       if (root->child[i] != NULL)
       {
-         // printf("%c", root->letter);
-
          word[place] = root->letter;
-         struct Node *temp = root->child[i];
-         word = realloc(word, (place + 1) * sizeof(char));
          place++;
-         printTrie_defult(temp, word, place);
+         printTrie_defult(root->child[i], word, place);
          place--;
       }
    }
@@ -129,21 +120,14 @@ void printTrie_parameter(struct Node *root, char *word, int place)
       }
       printf(" %d", root->count);
       printf("\n");
-      // printf("%s %d\n", word, root->count);
    }
    for (int i = SIZE - 1; i >= 0; i--)
    {
-      // printf("ff");
       if (root->child[i] != NULL)
       {
-         // printf("g ");
-
          word[place] = root->letter;
-         // printf("%c", word[place]);
-         struct Node *temp = root->child[i];
-         word = realloc(word, (place + 1) * sizeof(char));
          place++;
-         printTrie_parameter(temp, word, place);
+         printTrie_parameter(root->child[i], word, place);
          place--;
       }
    }
@@ -157,6 +141,5 @@ void free_trie(struct Node *del)
          free_trie(del->child[i]);
       }
    }
-   // printf("%c ",del->letter);
    free(del);
 }
