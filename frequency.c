@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
             if (full_text == EOF)
             {
                 put_word(root, txt);
-                free(txt);
+                // free(txt);
             }
         }
         else
