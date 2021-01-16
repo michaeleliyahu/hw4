@@ -81,9 +81,8 @@ void printTrie_defult(struct Node *root, char *word, int place)
    }
    if (root->End_Word == true)
    {
+      // word = realloc(word, (place+1) * sizeof(char));
       word[place] = root->letter;
-      //  word = realloc(word, (place + 1) * sizeof(char));
-      word[place + 1] = 0;
 
       for (int f = 1; f <= place; f++)
       {
@@ -96,8 +95,8 @@ void printTrie_defult(struct Node *root, char *word, int place)
    {
       if (root->child[i] != NULL)
       {
+         // word = realloc(word, (place+1) * sizeof(char));
          word[place] = root->letter;
-         // word = realloc(word, (place + 1) * sizeof(char));
          place++;
          printTrie_defult(root->child[i], word, place);
          place--;

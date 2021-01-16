@@ -50,7 +50,10 @@ int main(int argc, char *argv[])
             }
             else
             {
-                put_word(root, txt);
+                if (strlen(txt)!=0)
+                {
+                   put_word(root, txt);
+                }                
                 i = 0;
                 free(txt);
                 txt = (char *)malloc(sizeof(char));
